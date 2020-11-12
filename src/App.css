@@ -7,6 +7,6 @@ small.loading-text {
   text-align: center;
 }
 
-section.organization-section {
-  padding: 2rem;
+section.organization-section, section.repositories-section {
+  padding-left: 2rem;
 }
