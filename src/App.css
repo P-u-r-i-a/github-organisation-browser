@@ -7,7 +7,7 @@ small.loading-text {
   text-align: center;
 }
 
-section.organization-section, section.repositories-section {
+section.organisation-section, section.repositories-section {
   padding-left: 2rem;
 }
 .load-more-btn {

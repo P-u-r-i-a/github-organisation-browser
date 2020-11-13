@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import Org from '../components/Organization';
+import Org from '../components/Organisation';
 
 class RepositoryBrowser extends Component {
     constructor() {
@@ -16,7 +16,7 @@ class RepositoryBrowser extends Component {
             repoDirection: 'asc'
         };
 
-        this._fetchOrganizationDetails = this._fetchOrganizationDetails.bind(this);
+        this._fetchOrganisationDetails = this._fetchOrganisationDetails.bind(this);
         this._fetchRepositories = this._fetchRepositories.bind(this);
         this._renderResults = this._renderResults.bind(this);
         this._renderRepos = this._renderRepos.bind(this);
@@ -24,13 +24,13 @@ class RepositoryBrowser extends Component {
         this._fetchMore = this._fetchMore.bind(this);
     }
 
-    // call _fetchOrganizationDetails() to get the organization details after that the component is mounted!
+    // call _fetchOrganisationDetails() to get the organisation details after that the component is mounted!
     componentDidMount() {
-        this._fetchOrganizationDetails();
+        this._fetchOrganisationDetails();
     }
 
-    // fetch organization details
-    _fetchOrganizationDetails(){
+    // fetch organisation details
+    _fetchOrganisationDetails(){
         fetch(`https://api.github.com/orgs/${this.state.orgName}`)
             .then((res) => {
                 return res.json();
@@ -45,7 +45,7 @@ class RepositoryBrowser extends Component {
             });
     }
 
-    // fetch organization's repositories
+    // fetch organisation's repositories
     _fetchRepositories(hasNewFilter = false, page= this.state.currentPage){
         fetch(`https://api.github.com/orgs/${this.state.orgName}/repos?` + new URLSearchParams({
                  per_page: this.state.perPage,
@@ -65,11 +65,11 @@ class RepositoryBrowser extends Component {
                 } else {
                         if(repos.length > 0){
                             this.setState({
-                                repos: this.state.repos ? this.state.repos.concat(repos) : repos,
+                            repos: this.state.repos ? this.state.repos.concat(repos) : repos,
                              });
                         } else {
                          this.setState({ hasMoreResults: false });
-                     }
+                    }
                 }
             })
             .catch(error => {
@@ -125,11 +125,11 @@ class RepositoryBrowser extends Component {
         </section>
     }
 
-    // render all the results (organization details and its repositories)
+    // render all the results (organisation details and its repositories)
     _renderResults() {
         return (
             <div>
-                <Org organization={this.state.org} />
+                <Org organisation={this.state.org} />
                 {
                     this.state.repos ? this._renderRepos() : <small className="loading-text">Loading...</small>
                 }

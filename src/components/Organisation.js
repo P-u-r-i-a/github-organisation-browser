@@ -1,8 +1,8 @@
-const Organization = function(props) {
-    const { name, avatar_url, description, location, public_repos, blog, html_url } = props.organization;
+const Organisation = function(props) {
+    const { name, avatar_url, description, location, public_repos, blog, html_url } = props.organisation;
     
     return(
-        <section className="organization-section">
+        <section className="organisation-section">
             <p>Name: {name}</p>
             <p>Avatar: </p>
             <img src={avatar_url} alt="avatar" />
@@ -16,4 +16,4 @@ const Organization = function(props) {
     );
 }
 
-export default Organization;
+export default Organisation;
