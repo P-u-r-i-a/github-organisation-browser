@@ -7,8 +7,8 @@ class RepositoryBrowser extends Component {
         this.state = {
             org: null,
             repos: null,
-            currentPage: 0,
-            nextPage: 1,
+            currentPage: 1,
+            hasMoreResults: true,
             perPage: 25,
             orgName: 'catalyst',
             repoType: 'all',
@@ -21,6 +21,7 @@ class RepositoryBrowser extends Component {
         this._renderResults = this._renderResults.bind(this);
         this._renderRepos = this._renderRepos.bind(this);
         this._setFilter = this._setFilter.bind(this);
+        this._fetchMore = this._fetchMore.bind(this);
     }
 
     // call _fetchOrganizationDetails() to get the organization details after that the component is mounted!
@@ -45,10 +46,10 @@ class RepositoryBrowser extends Component {
     }
 
     // fetch organization's repositories
-    _fetchRepositories(hasNewFilter = false){
+    _fetchRepositories(hasNewFilter = false, page= this.state.currentPage){
         fetch(`https://api.github.com/orgs/${this.state.orgName}/repos?` + new URLSearchParams({
                  per_page: this.state.perPage,
-                 page: this.state.nextPage,
+                 page: page,
                  type: this.state.repoType,
                  sort: this.state.repoSort,
                  direction: this.state.repoDirection, 
@@ -59,11 +60,16 @@ class RepositoryBrowser extends Component {
                 if(hasNewFilter) {
                     this.setState({
                         repos: repos,
+                        hasMoreResults: true,
                     });
                 } else {
-                    this.setState({
-                        repos: this.state.repos ? this.state.repos.concat(repos) : repos,
-                    });
+                        if(repos.length > 0){
+                            this.setState({
+                                repos: this.state.repos ? this.state.repos.concat(repos) : repos,
+                             });
+                        } else {
+                         this.setState({ hasMoreResults: false });
+                     }
                 }
             })
             .catch(error => {
@@ -76,6 +82,13 @@ class RepositoryBrowser extends Component {
             [name]: value,
             currentPage: 1
         });
+    }
+    // load more data when users click on the Load more button!
+    _fetchMore(){
+         this._fetchRepositories(false, this.state.currentPage + 1);
+          this.setState({
+            currentPage: this.state.currentPage + 1
+         })
     }
 
     // render the fetched repositories
@@ -130,6 +143,9 @@ class RepositoryBrowser extends Component {
             <h1 className="title">Repository Browser</h1>
                 {
                     this.state.org ? this._renderResults() : <small className="loading-text">Loading...</small>
+                }
+                {
+                    this.state.repos && this.state.hasMoreResults ? <button className="load-more-btn" onClick={()=> this._fetchMore()}>Load More ...</button> : ""
                 }
             </div>
         );

@@ -10,3 +10,6 @@ small.loading-text {
 section.organization-section, section.repositories-section {
   padding-left: 2rem;
 }
+.load-more-btn {
+  margin: .5rem 2rem 2rem 2rem;
+}
