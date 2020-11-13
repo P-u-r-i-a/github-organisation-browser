@@ -1,5 +1,6 @@
 import React,  { Component } from 'react';
 import Org from '../components/Organisation';
+import Repository from '../components/Repository';
 
 class RepositoryBrowser extends Component {
     constructor() {
@@ -119,7 +120,8 @@ class RepositoryBrowser extends Component {
              <button onClick={() => this._fetchRepositories(true)}>Search</button>
 
            { 
-                this.state.repos.map((repo, index) => { return <p>{++index + ". " + repo.name}</p> })
+                this.state.repos.map((repo, index) => { 
+                    return <Repository organisation={this.state.orgName} repository={repo} key={index} /> })
            }
 
         </section>

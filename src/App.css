@@ -13,3 +13,8 @@ section.organisation-section, section.repositories-section {
 .load-more-btn {
   margin: .5rem 2rem 2rem 2rem;
 }
+
+.contributor-avatar {
+  border-radius: 80px;
+  margin: .5rem;
+}
