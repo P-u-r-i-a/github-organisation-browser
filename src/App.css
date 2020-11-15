@@ -113,11 +113,11 @@ select {
   background-color: #f8f8f8;
 }
 
-.search-filter-area {
+.search-filter-area, .repository-section {
   margin-top: 1rem;
 }
 
-.search-btn {
+.search-btn, .load-more-btn {
   display: block;
   width: 90%;
   margin: auto;
@@ -131,10 +131,43 @@ select {
   border-radius: 2rem;
 }
 
-.search-btn:hover {
+.search-btn:hover, .load-more-btn:hover {
   background-color: #3498db;
   color: white;
   transition-property: all;
   transition-duration: 1s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.repo-name {
+  display: block;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.repo-description {
+  text-align: center;
+  padding: 1rem;
+}
+
+.repo-details {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.repo-details > p{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 6em;
+  width: 6rem;
+}
+
+hr {
+  border: 1px dashed #E5E5E5;
 }
