@@ -95,31 +95,33 @@ class RepositoryBrowser extends Component {
     // render the fetched repositories
     _renderRepos() {
         return <section className="repositories-section">
-            <h2>Repositories: </h2>
-            <div>
+            <div className="search-filter-area card">
+                <div className="from-group">
                 <label>Repository type: </label>
                 <select onChange={e => this._setFilter('repoType',e.target.value)}>
                     <option selected value="all">All</option>
                     <option value="sources">Not forked</option>
                     <option value="forks">Forked</option>
                 </select>
-            </div>
-            <div>
-                <label>Sort by: </label>
-                <select onChange={e => this._setFilter('repoSort',e.target.value)}>
-                    <option selected value="full_name">Full name</option>
-                    <option value="created">Created time</option>
-                    <option value="updated">Updated time</option>
-                </select>
-                <select onChange={e => this._setFilter('repoDirection',e.target.value)}>
-                    <option selected value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
+                </div>
+                <div>
+                    <label>Sort by: </label>
+                    <select onChange={e => this._setFilter('repoSort',e.target.value)}>
+                        <option selected value="full_name">Full name</option>
+                        <option value="created">Created time</option>
+                        <option value="updated">Updated time</option>
+                    </select>
+                    <select onChange={e => this._setFilter('repoDirection',e.target.value)}>
+                        <option selected value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+             <button className="search-btn" onClick={() => this._fetchRepositories(true)}>Search</button>
+
             </div>
 
-             <button onClick={() => this._fetchRepositories(true)}>Search</button>
-
-           { 
+             <h2>Repositories: </h2>
+           {    
                 this.state.repos.map((repo, index) => { 
                     return <Repository organisation={this.state.orgName} repository={repo} key={index} /> })
            }
@@ -141,8 +143,7 @@ class RepositoryBrowser extends Component {
 
     render() {
         return (
-            <div>
-            <h1 className="title">Repository Browser</h1>
+            <div className="container">
                 {
                     this.state.org ? this._renderResults() : <small className="loading-text">Loading...</small>
                 }
