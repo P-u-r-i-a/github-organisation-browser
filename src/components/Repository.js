@@ -42,7 +42,6 @@ class Repository extends Component{
                 <div className="card">
                     <a className="repo-name" href={html_url}><strong>{name}</strong></a>
                     <p className="repo-description">{description}</p>
-                    <hr />
                     <div className="repo-details">
                         <p>
                             <svg style={{width:'24px', height:'24px'}} viewBox="0 0 24 24">

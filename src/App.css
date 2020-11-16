@@ -80,6 +80,7 @@ h1.org-title {
 small.loading-text {
   display: block;
   text-align: center;
+  padding: 2rem;
 }
 
 .load-more-btn {
@@ -170,4 +171,46 @@ select {
 
 hr {
   border: 1px dashed #E5E5E5;
+}
+
+.org-github-details > .org-detail {
+  display: none;
+}
+
+@media only screen and (min-width: 992px) {
+
+  .org-details, .org-github-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .repository-section {
+    margin: 1rem;
+  }
+
+  .repository-section > .card {
+    display: grid;
+    grid-auto-rows: 1fr;
+
+  }
+  .respositories-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .org-details {
+    display: none;
+  }
+
+  .org-github-details > .org-detail {
+    display: flex;
+  }
+
+  .org-github-details {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  }
+
 }

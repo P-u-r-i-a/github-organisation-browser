@@ -10,7 +10,7 @@ class RepositoryBrowser extends Component {
             repos: null,
             currentPage: 1,
             hasMoreResults: true,
-            perPage: 25,
+            perPage: 10,
             orgName: 'catalyst',
             repoType: 'all',
             repoSort: 'full_name',
@@ -96,35 +96,40 @@ class RepositoryBrowser extends Component {
     _renderRepos() {
         return <section className="repositories-section">
             <div className="search-filter-area card">
-                <div className="from-group">
-                <label>Repository type: </label>
-                <select onChange={e => this._setFilter('repoType',e.target.value)}>
-                    <option selected value="all">All</option>
-                    <option value="sources">Not forked</option>
-                    <option value="forks">Forked</option>
-                </select>
+                <div>
+                    <label>Repository type: </label>
+                    <select onChange={e => this._setFilter('repoType',e.target.value)}>
+                        <option selected value="all">All</option>
+                        <option value="sources">Not forked</option>
+                        <option value="forks">Forked</option>
+                    </select>
                 </div>
                 <div>
                     <label>Sort by: </label>
-                    <select onChange={e => this._setFilter('repoSort',e.target.value)}>
-                        <option selected value="full_name">Full name</option>
-                        <option value="created">Created time</option>
-                        <option value="updated">Updated time</option>
-                    </select>
-                    <select onChange={e => this._setFilter('repoDirection',e.target.value)}>
-                        <option selected value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
+                   <div className="form-group">
+                        <select onChange={e => this._setFilter('repoSort',e.target.value)}>
+                            <option selected value="full_name">Full name</option>
+                            <option value="created">Created time</option>
+                            <option value="updated">Updated time</option>
+                        </select>
+                        <select onChange={e => this._setFilter('repoDirection',e.target.value)}>
+                            <option selected value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                   </div>
                 </div>
              <button className="search-btn" onClick={() => this._fetchRepositories(true)}>Search</button>
 
             </div>
 
              <h2>Repositories: </h2>
-           {    
-                this.state.repos.map((repo, index) => { 
+             <div className="respositories-wrapper">
+                {    
+                    this.state.repos.map((repo, index) => { 
                     return <Repository organisation={this.state.orgName} repository={repo} key={index} /> })
-           }
+                }
+             </div>
+           
 
         </section>
     }
