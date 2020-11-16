@@ -1,3 +1,8 @@
+<p align="center">
+    <img src="https://raw.githubusercontent.com/PuriaGithub/github-organisation-browser/master/public/logo192.png?token=AD376RH6RFA5IGAQNKV7JES7WMGHS" width="129" alt="logo">
+</p>
+
+
 # Github Organisation Browser
 
 This project is a single page application (SPA) using ReactJS and Github Restful API.
