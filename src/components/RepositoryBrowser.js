@@ -97,17 +97,17 @@ class RepositoryBrowser extends Component {
         return <section className="repositories-section">
             <div className="search-filter-area card">
                 <div>
-                    <label>Repository type: </label>
-                    <select defaultValue="all" onChange={e => this._setFilter('repoType',e.target.value)}>
+                    <label for="filter" >Repository type: </label>
+                    <select id="filter" defaultValue="all" onChange={e => this._setFilter('repoType',e.target.value)}>
                         <option value="all">All</option>
                         <option value="sources">Not forked</option>
                         <option value="forks">Forked</option>
                     </select>
                 </div>
                 <div>
-                    <label>Sort by: </label>
+                    <label for="sort">Sort by: </label>
                    <div className="form-group">
-                        <select defaultValue="full_name" onChange={e => this._setFilter('repoSort',e.target.value)}>
+                        <select defaultValue="full_name" id="sort" onChange={e => this._setFilter('repoSort',e.target.value)}>
                             <option value="full_name">Full name</option>
                             <option value="created">Created time</option>
                             <option value="updated">Updated time</option>
