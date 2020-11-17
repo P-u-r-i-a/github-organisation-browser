@@ -1,5 +1,8 @@
-const initialState = {};
+import { combineReducers  } from 'redux';
+import main from './main';
 
-export default function(state = initialState, action) {
-    return state;
-}
+export default combineReducers(
+    {
+        main : main
+    }
+);

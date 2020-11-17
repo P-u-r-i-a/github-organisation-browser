@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { fetchContributors } from '../actions';
 
 class Repository extends Component{
     constructor(){
@@ -9,19 +11,9 @@ class Repository extends Component{
 
         this._fetchContributors = this._fetchContributors.bind(this);
     }
-    // fetch repository's contributors
+    // fetch the repository's contributors
     _fetchContributors(){
-        fetch(`https://api.github.com/repos/${this.props.organisation}/${this.props.repository.name}/contributors`)
-            .then((res) => {
-                return res.json();
-            }).then(ctr => {
-                this.setState({
-                    contributors: ctr
-                })
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        this.props.fetchContributors(this.props.organisation, this.props.repository.name);
     }
     // render contributors
     _renderContributors(){
@@ -45,6 +37,7 @@ class Repository extends Component{
                          <strong>{name}</strong>
                      </a>
                     <p className="repo-description" aria-label="repository's description">{description}</p>
+                    <button className="ctrs-btn" onClick={ () => this._fetchContributors()}>Show contributors</button> 
                     <div className="repo-details">
                         <p>
                             <svg aria-labelledby="title" style={{width:'24px', height:'24px'}} viewBox="0 0 24 24">
@@ -78,18 +71,13 @@ class Repository extends Component{
                                 <title id="title" lang="en">Code page Icon</title>
                                 <path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6.12,15.5L9.86,19.24L11.28,17.83L8.95,15.5L11.28,13.17L9.86,11.76L6.12,15.5M17.28,15.5L13.54,11.76L12.12,13.17L14.45,15.5L12.12,17.83L13.54,19.24L17.28,15.5Z" />
                             </svg>
-                            <small>{language ? language : '-'}</small></p>
+                            <small>{language ? language : '-'}</small>
+                        </p>
                     </div>
-                    {/* {
-                        !this.state.contributors ? <button onClick={ () => this._fetchContributors()}>Show contributors</button> : ""
-                    }
-                    <br />
-                    {
-                        this._renderContributors()
-                    } */}
                 </div>
             </section>
         );
     }
 }
-export default Repository;
+
+export default connect( null, { fetchContributors })(Repository);

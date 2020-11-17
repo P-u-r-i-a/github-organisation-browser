@@ -1,6 +1,8 @@
 import React,  { Component } from 'react';
+import { connect } from 'react-redux';
 import Org from '../components/Organisation';
 import Repository from '../components/Repository';
+import { closeModal } from '../actions';
 
 class RepositoryBrowser extends Component {
     constructor() {
@@ -122,7 +124,7 @@ class RepositoryBrowser extends Component {
 
             </div>
 
-             <h2>Repositories: </h2>
+             <h2 className="title">Repositories</h2>
              <div className="respositories-wrapper">
                 {    
                     this.state.repos.map((repo, index) => { 
@@ -155,9 +157,35 @@ class RepositoryBrowser extends Component {
                 {
                     this.state.repos && this.state.hasMoreResults ? <button className="load-more-btn" onClick={()=> this._fetchMore()}>Load More ...</button> : ""
                 }
+                <div className="modal" onClick={() => this.props.closeModal()}  style={{ display: this.props.modalVisibility ? 'block' : 'none' }}>
+                    <div className="modal-content">
+                        <div className="modal-header">
+                        <span className="close" onClick={() => this.props.closeModal()}>&times;</span>
+                        <h2>Top Contributors</h2>
+                        </div>
+                        <div className="modal-body">
+                            {
+                            this.props.contributors ?
+                                this.props.contributors.map((contributor, index) => {
+                                        return <a target="_blank" rel="noreferrer" href={contributor.html_url}>
+                                             <img className="contributor-avatar" 
+                                            src={contributor.avatar_url} alt={contributor.login} height="80" width="80" key={contributor.login} />
+                                        </a> }) :
+                                    ""
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-export default RepositoryBrowser;
+let mapStateToProps = (store) => {
+    return {
+        contributors: store.main.contributors,
+        modalVisibility: store.main.modalVisibility,
+    }
+}
+
+export default connect(mapStateToProps, { closeModal })(RepositoryBrowser);
