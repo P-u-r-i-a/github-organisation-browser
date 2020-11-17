@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PuriaGithub/github-organisation-browser/master/public/logo192.png?token=AD376RH6RFA5IGAQNKV7JES7WMGHS" width="129" alt="logo">
+    <img src="https://raw.githubusercontent.com/PuriaGithub/github-organisation-browser/master/public/logo192.png" width="129" alt="logo">
 </p>
 
 
@@ -25,6 +25,7 @@ It also presents a list of all the repositories available on Github and their de
 * Watchers Count
 * License (if there is one)
 * Language
+* Top 5 Contributors
 
 In addition, it allows you to filter and sort the repository list with a few options like whether it is a forked repository or not and etc.
 
@@ -47,5 +48,11 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Tested successfully on the following web browsers:
+* Safari - v13.0.2
+* Google Chrome - v86.0.4240.198 
+* Microsoft Edge - v86.0.622.69 
+* Firefox - v82.0.3
 
 
