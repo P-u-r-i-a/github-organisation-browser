@@ -22,13 +22,20 @@
   border-radius: 10rem;
   height: 8rem;
   width: 8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: auto;
   margin-top: -5rem;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
 
 
 }
@@ -39,16 +46,31 @@
 }
 
 .org-details, .org-github-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .org-details > p{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 svg {
@@ -62,10 +84,19 @@ svg {
 }
 
 .org-github-details > p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 h1.title, h1.org-title,h2.title, p.org-description {
@@ -135,9 +166,15 @@ select {
 .search-btn:hover, .load-more-btn:hover {
   background-color: #3498db;
   color: white;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
   transition-property: all;
-  transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-transition-duration: 1s;
+       -o-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+       -o-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .repo-name {
@@ -155,16 +192,29 @@ select {
 }
 
 .repo-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .repo-details > p{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 6em;
   width: 6rem;
 }
@@ -228,9 +278,14 @@ hr {
 
 .modal-body {
   padding: 2px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 @-webkit-keyframes slideIn {
@@ -269,7 +324,9 @@ hr {
 @media only screen and (min-width: 992px) {
 
   .org-details, .org-github-details {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -278,13 +335,17 @@ hr {
   }
 
   .repository-section > .card {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-rows: 25% 100px auto;
     grid-template-rows: 25% 100px auto;
     
 
   }
   .respositories-wrapper {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
   
@@ -293,12 +354,16 @@ hr {
   }
 
   .org-github-details > .org-detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
   .org-github-details {
+    display: -ms-grid;
     display: grid;
     grid-auto-rows: 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
   }
