@@ -40,11 +40,24 @@ For example, to get Microsoft repositories details, you need to have something l
 `orgName: 'microsoft'`
 
 
-## Available Scripts
+## How to run?
 
-In the project directory, you can run:
+### Step 1 - Downloading all the required node modules
 
-### `yarn start`
+> `yarn`
+
+or
+
+> `npm install`
+
+
+### Step 2 - Serving the application
+
+> `yarn start`
+
+or
+
+> `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
