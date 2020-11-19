@@ -3,7 +3,7 @@
 </p>
 
 
--# Github Organisation Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
+# Github Organisation Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
 
 This project is a single page application (SPA) using ReactJS and Github Restful API.
 
@@ -44,20 +44,20 @@ For example, to get Microsoft repositories details, you need to have something l
 
 ### Step 1 - Downloading all the required node modules
 
-> `yarn`
+`yarn`
 
 or
 
-> `npm install`
+`npm install`
 
 
 ### Step 2 - Serving the application
 
-> `yarn start`
+`yarn start`
 
 or
 
-> `npm run start`
+`npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
