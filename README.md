@@ -3,7 +3,7 @@
 </p>
 
 
-# Github Organisation Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
+-# Github Organisation Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
 
 This project is a single page application (SPA) using ReactJS and Github Restful API.
 
@@ -29,15 +29,15 @@ It also presents a list of all the repositories available on Github and their de
 
 In addition, it allows you to filter and sort the repository list with a few options like whether it is a forked repository or not and etc.
 
-## Change the organisation detail
+## Change the default organisation
 
-You can easily change the organisation by changing the following part in the constructor method in RepositroyBrowser.js file.
+You can easily change the default organisation by changing the following part in the `.env` file in the root directory.
 
-`this.state = { ...  , orgName: 'new-org-name', ... };`
+`REACT_APP_ORG_NAME=organisation-name`
 
 For example, to get Microsoft repositories details, you need to have something like:
 
-`orgName: 'microsoft'`
+`REACT_APP_ORG_NAME=microsoft`
 
 
 ## How to run?
