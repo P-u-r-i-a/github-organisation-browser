@@ -7,7 +7,7 @@ import { SET_CONTRIBUTORS,
          NO_MORE_RESULT } from "../values";
 
 const initialState = { 
-    orgName: 'catalyst',
+    orgName: process.env.REACT_APP_ORG_NAME ,
     contributors: null,
     modalVisibility: false,
     orgDetails: null,
