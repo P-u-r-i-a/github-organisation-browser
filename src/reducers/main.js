@@ -14,7 +14,7 @@ const initialState = {
     repos: null,
     currentPage: 1,
     hasMoreResult: true,
-    perPage: 100,
+    perPage: 10,
     repoType: 'all',
     repoSort: 'full_name',
     repoDirection: 'asc'
@@ -37,7 +37,7 @@ let mainReducer = (state = initialState, action) => {
             }
         case SET_REPOSITORIES:
             return {
-                ...state, repos: action.payload, currentPage: 1
+                ...state, repos: action.payload, currentPage: 1, hasMoreResult: true
             }
         case ADD_MORE_REPOSITORIES:
             return {
