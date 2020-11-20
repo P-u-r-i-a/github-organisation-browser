@@ -3,7 +3,7 @@
 </p>
 
 
--# Github Organisation Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
+# Github Organisation Respository Browser - [Live Version](https://flamboyant-panini-a781ab.netlify.app/)
 
 This project is a single page application (SPA) using ReactJS and Github Restful API.
 
@@ -67,5 +67,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * Google Chrome - v86.0.4240.198 
 * Microsoft Edge - v86.0.622.69 
 * Firefox - v82.0.3
+
+### Resources
+[React](https://reactjs.org/) - A JavaScript library for building user interfaces
+
+[Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+
+[Material Designs Icons](https://materialdesignicons.com/) -  Material Design icons and more from the community
+
 
 
