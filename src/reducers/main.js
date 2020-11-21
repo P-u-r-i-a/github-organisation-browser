@@ -4,7 +4,8 @@ import { SET_CONTRIBUTORS,
          SET_VALUE,
          CLOSE_MODAL,   
          ADD_MORE_REPOSITORIES,
-         NO_MORE_RESULT } from "../values";
+         NO_MORE_RESULT, 
+         CHANGE_ORGANISATION} from "../values";
 
 const initialState = { 
     orgName: process.env.REACT_APP_ORG_NAME ,
@@ -51,6 +52,10 @@ let mainReducer = (state = initialState, action) => {
             return {
                 ...state,  hasMoreResult: false, currentPage: 1
             }
+        case CHANGE_ORGANISATION:
+            return {
+                ...initialState, orgName: action.payload
+            } 
         default:
             return state;
     }

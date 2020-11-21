@@ -5,7 +5,8 @@ import { SET_CONTRIBUTORS,
          SET_REPOSITORIES, 
          ADD_MORE_REPOSITORIES, 
          SET_VALUE,
-         NO_MORE_RESULT } from "./values";
+         NO_MORE_RESULT, 
+         CHANGE_ORGANISATION} from "./values";
         
 
 // fetch the repository's contributors
@@ -32,9 +33,7 @@ export let closeModal = () => {
 }
 
 // fetch organisation details
-export let fetchOrganisationDetails = () => (dispatch) => {
-    let { orgName } = store.getState().main;
-
+export let fetchOrganisationDetails = (orgName = store.getState().main.orgName ) => (dispatch) => {
     fetch(`https://api.github.com/orgs/${orgName}`)
     .then((res) => {
         return res.json();
@@ -95,5 +94,13 @@ export let setValue = (name, value) => {
             name: name,
             value: value
         }
+    }
+}
+
+// change the organisation
+export let changeOrganisation = (org) => {
+    return {
+        type: CHANGE_ORGANISATION,
+        payload: org
     }
 }
