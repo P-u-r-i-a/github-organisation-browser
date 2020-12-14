@@ -1,13 +1,33 @@
-const Organisation = function(props) {
-    const { name, avatar_url, description, location, public_repos, blog, html_url } = props.organisation;
-    
-    return(
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeOrganisation, fetchOrganisationDetails, fetchRepositories } from '../actions';
+
+
+class Organisation extends Component {
+    constructor(){
+        super();
+        this._changeOrganisation = this._changeOrganisation.bind(this);
+    }
+
+    _changeOrganisation(){
+        let org = prompt('Please enter a new organsisation name:', 'catalyst');
+        this.props.changeOrganisation(org);
+        this.props.fetchOrganisationDetails(org);
+        this.props.fetchRepositories(true);
+    }
+
+    render(){
+        const { name, avatar_url, description, location, 
+                public_repos, blog, html_url } = this.props.organisation;
+
+        return(
         <section className="organisation-section">
             <div className="card">
                 <div className="avatar-wrapper">
                     <img className="avatar" src={avatar_url} alt="organisation's avatar" title={name + " Avatar"} />
                 </div>
                 <h1 aria-label="organisation name" className="org-title">{name}</h1>
+                <button className="change-btn" onClick={ ()=> this._changeOrganisation() }>Change Organisation</button>
                 <p aria-label="organisation description" className="org-description">{description}</p>
                 <div className="org-details">
                     <p className="org-detail">
@@ -57,8 +77,8 @@ const Organisation = function(props) {
                 </p>
             </div>
         </section>
-
-    );
+        );
+    }
 }
 
-export default Organisation;
+export default connect(null, { changeOrganisation, fetchOrganisationDetails, fetchRepositories })(Organisation);
