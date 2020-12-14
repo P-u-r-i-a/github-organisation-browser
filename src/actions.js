@@ -9,19 +9,14 @@ import { SET_CONTRIBUTORS,
         
 
 // fetch the repository's contributors
- export let fetchContributors = (org, repo) => (dispatch) => {
-    fetch(`https://api.github.com/repos/${org}/${repo}/contributors`)
-        .then((res) => {
-            return res.json();
-        }).then(ctr => {
-            dispatch({
-                type: SET_CONTRIBUTORS,
-                payload: ctr.slice(0, 5)
-            })
-        })
-        .catch(error => {
-            console.error(error);
-    });
+ export let fetchContributors = (org, repo) => async (dispatch) => {
+    try {
+        let res = await fetch(`https://api.github.com/repos/${org}/${repo}/contributors`)
+        let ctrs = await res.json();
+        dispatch({ type: SET_CONTRIBUTORS, payload: ctrs.slice(0, 5) });
+    } catch(err) {
+        console.log(err);
+    }
 }   
 
 //  close the contributors modal
@@ -32,58 +27,43 @@ export let closeModal = () => {
 }
 
 // fetch organisation details
-export let fetchOrganisationDetails = () => (dispatch) => {
+export let fetchOrganisationDetails = () => async (dispatch) => {
     let { orgName } = store.getState().main;
 
-    fetch(`https://api.github.com/orgs/${orgName}`)
-    .then((res) => {
-        return res.json();
-        }).then(orgDetails => {
-            dispatch({
-                type: SET_ORGANISATION,
-                payload: orgDetails
-            });
-        })
-    .catch(error => {
-        console.error(error);
-    });
+    try {
+        let res = await fetch(`https://api.github.com/orgs/${orgName}`);
+        let orgDetails = await res.json();
+        dispatch({ type: SET_ORGANISATION, payload: orgDetails });
+
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 // fetch organisation's repositories
-export let fetchRepositories = (initialRequest = false, page = store.getState().main.currentPage) => (dispatch) => {
+export let fetchRepositories = (initialRequest = false, page = store.getState().main.currentPage) => async (dispatch) => {
     let { orgName, perPage, repoType, repoSort, repoDirection } = store.getState().main;
     
-    fetch(`https://api.github.com/orgs/${orgName}/repos?` + new URLSearchParams({
-        per_page: perPage,
-        page: page,
-        type: repoType,
-        sort: repoSort,
-        direction: repoDirection, 
-    }))
-    .then((res) => {
-        return res.json();
-        }).then(repos => {
-            if(initialRequest){
-                dispatch({
-                    type: SET_REPOSITORIES,
-                    payload: repos
-                });
-            } else {
-                if(repos.length > 0){
-                    dispatch({
-                        type: ADD_MORE_REPOSITORIES,
-                        payload: repos
-                    });
-                } else {
-                    dispatch({
-                        type: NO_MORE_RESULT
-                    });
-                }
-            }
-        })
-    .catch(error => {
-        console.error(error);
-    });
+    try {
+        let res = await fetch(`https://api.github.com/orgs/${orgName}/repos?` + new URLSearchParams({
+            per_page: perPage,
+            page: page,
+            type: repoType,
+            sort: repoSort,
+            direction: repoDirection, 
+        }))
+
+        let repos = await res.json();
+
+        initialRequest ? dispatch({ type: SET_REPOSITORIES, payload: repos }) : 
+        (
+            repos.length > 0 ? dispatch({ type: ADD_MORE_REPOSITORIES, payload: repos }):
+            dispatch({ type: NO_MORE_RESULT })
+        );
+
+    } catch(err) {
+        console.log(err);
+    }
     
 }
 
